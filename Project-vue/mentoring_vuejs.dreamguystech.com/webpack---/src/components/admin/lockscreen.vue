@@ -1,0 +1,11 @@
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"main-wrapper login-body"},[_c('div',{staticClass:"login-wrapper"},[_c('div',{staticClass:"container"},[_c('div',{staticClass:"loginbox"},[_vm._m(0),_vm._v(" "),_c('div',{staticClass:"login-right"},[_c('div',{staticClass:"login-right-wrap"},[_vm._m(1),_vm._v(" "),_vm._m(2),_vm._v(" "),_c('div',{staticClass:"text-center dont-have"},[_vm._v("Sign in as a different user? "),_c('router-link',{attrs:{"to":"/admin/login"}},[_vm._v("Login")])],1)])])])])])])}
+var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"login-left"},[_c('img',{staticClass:"img-fluid",attrs:{"src":require("@/assets/img/admin/logo.png"),"alt":"Logo"}})])},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"lock-user"},[_c('img',{staticClass:"rounded-circle",attrs:{"src":require("@/assets/img/admin/profiles/avatar-12.jpg"),"alt":"User Image"}}),_vm._v(" "),_c('h4',[_vm._v("Allen Davis")])])},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('form',{attrs:{"action":"/admin/index"}},[_c('div',{staticClass:"form-group"},[_c('input',{staticClass:"form-control",attrs:{"type":"text","placeholder":"Password"}})]),_vm._v(" "),_c('div',{staticClass:"form-group mb-0"},[_c('button',{staticClass:"btn btn-primary btn-block",attrs:{"type":"submit"}},[_vm._v("Enter")])])])}]
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+export default esExports
+
+
+//////////////////
+// WEBPACK FOOTER
+// ./node_modules/vue-loader/lib/template-compiler?{"id":"data-v-a66416ce","hasScoped":false,"transformToRequire":{"video":["src","poster"],"source":"src","img":"src","image":"xlink:href"},"buble":{"transforms":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./src/components/admin/lockscreen.vue
+// module id = null
+// module chunks = 

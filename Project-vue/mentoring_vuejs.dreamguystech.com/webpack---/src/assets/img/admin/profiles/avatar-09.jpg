@@ -1,0 +1,8 @@
+module.exports = __webpack_public_path__ + "static/img/avatar-09.de28ab6.jpg";
+
+
+//////////////////
+// WEBPACK FOOTER
+// ./src/assets/img/admin/profiles/avatar-09.jpg
+// module id = BSFF
+// module chunks = 0

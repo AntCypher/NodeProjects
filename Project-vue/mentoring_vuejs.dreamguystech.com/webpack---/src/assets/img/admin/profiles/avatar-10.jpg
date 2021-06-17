@@ -1,0 +1,8 @@
+module.exports = __webpack_public_path__ + "static/img/avatar-10.aeff968.jpg";
+
+
+//////////////////
+// WEBPACK FOOTER
+// ./src/assets/img/admin/profiles/avatar-10.jpg
+// module id = Dy3G
+// module chunks = 0

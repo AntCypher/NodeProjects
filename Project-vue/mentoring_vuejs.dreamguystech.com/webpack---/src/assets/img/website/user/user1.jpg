@@ -1,0 +1,8 @@
+module.exports = __webpack_public_path__ + "static/img/user1.eeaea8a.jpg";
+
+
+//////////////////
+// WEBPACK FOOTER
+// ./src/assets/img/website/user/user1.jpg
+// module id = IZ6S
+// module chunks = 0

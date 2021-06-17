@@ -1,0 +1,101 @@
+<template>
+    <div class="main-wrapper">
+        <layout-headeradmin></layout-headeradmin>
+        <layout-sidebar></layout-sidebar>
+        <!-- Page Wrapper -->
+        <div class="page-wrapper">
+            <div class="content container-fluid">
+            
+                <!-- Page Header -->
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3 class="page-title">List of Mentor</h3>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><router-link to="/admin/index">Dashboard</router-link></li>
+                                <li class="breadcrumb-item"><a href="javascript:(0);">Users</a></li>
+                                <li class="breadcrumb-item active">Mentor</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Page Header -->
+                
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="datatable table table-hover table-center mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Mentor Name</th>
+                                                <th>Course</th>
+                                                <th>Member Since</th>
+                                                <th>Earned</th>
+                                                <th class="text-center">Account Status</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="item in mentor" :key="item.id">
+                                                <td>
+                                                    <h2 class="table-avatar">
+                                                        <router-link to="/admin/profile" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" :src="loadImg(item.image)" alt="User Image"></router-link>
+                                                        <router-link to="/admin/profile">{{item.name}}</router-link>
+                                                    </h2>
+                                                </td>
+                                                <td>{{item.course}}</td>
+                                                
+                                                <td>{{item.date}} <br><small>{{item.time}}</small></td>
+                                                
+                                                <td>{{item.earned}}</td>
+                                                
+                                                <td >
+                                                    <div class="status-toggle d-flex justify-content-center">
+                                                        <input type="checkbox" id="status_1" class="check" checked>
+                                                        <label for="status_1" class="checktoggle">checkbox</label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>			
+                </div>
+                
+            </div>			
+        </div>
+        <!-- /Page Wrapper -->
+        </div>
+</template>
+<script>
+     import mentor from '../../assets/json/admin/Mentor/mentor.json'
+     const images = require.context('@/assets/img/admin/profiles', false, /\.png$|\.jpg$/)
+    export default {
+        data() {
+		return {
+			mentor: mentor
+		}
+	},
+       mounted() {
+		 // Datatable
+		 if ($('.datatable').length > 0) {
+        $('.datatable').DataTable({
+          "bFilter": false,
+        });
+      }
+},
+methods:{
+        loadImg(imgPath) {
+            return images('./' + imgPath)
+        },
+    }
+    }
+</script>
+
+
+// WEBPACK FOOTER //
+// src/components/admin/mentor.vue

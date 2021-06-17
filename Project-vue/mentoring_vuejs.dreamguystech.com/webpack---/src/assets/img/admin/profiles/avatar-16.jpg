@@ -1,0 +1,8 @@
+module.exports = __webpack_public_path__ + "static/img/avatar-16.9b0cfee.jpg";
+
+
+//////////////////
+// WEBPACK FOOTER
+// ./src/assets/img/admin/profiles/avatar-16.jpg
+// module id = bVzV
+// module chunks = 0
