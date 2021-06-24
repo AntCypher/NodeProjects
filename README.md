@@ -15,3 +15,9 @@ https://www.solodev.com/blog/tags/Slick-Slider.stml
 # vue js
 
 https://mentoring-vuejs.dreamguystech.com/
+
+# Icon and Images
+
+https://unsplash.com/
+https://coverr.co/
+

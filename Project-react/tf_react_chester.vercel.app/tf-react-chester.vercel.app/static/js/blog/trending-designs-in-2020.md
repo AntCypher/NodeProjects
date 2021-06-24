@@ -1,0 +1,1 @@
+module.exports = __webpack_public_path__ + "static/media/trending-designs-in-2020.73bbfaad.md";

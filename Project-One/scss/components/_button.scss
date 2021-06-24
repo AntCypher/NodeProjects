@@ -1,15 +1,14 @@
 .btn:link,
 .btn:visited {
     text-decoration: none;
-    background-color: #ffffff;
-    color: $PrimaryColor;
+    background-color: $WhiteColor;
+    color: $DarkColor;
     padding: 15px 40px;
     border-radius: 100px;
     font-size: 16px;
-    font-weight: normal;
+    font-weight: 300;
     letter-spacing: 5px;
     text-transform: uppercase;
-    font-weight: 700;
     display: inline-flex;
     transition: all 0.2s ease-in-out;
     position: relative;
@@ -18,7 +17,7 @@
 
 .btn:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 20px rgba($DarkColor, 0.2);
 }
 
 .btn::after {
@@ -34,14 +33,14 @@
 }
 
 .btn:hover::after {
-    background-color: #ffffff;
+    background-color: $WhiteColor;
     transform: scaleX(1.4) scaleY(1.6);
     opacity: 0;
 }
 
 .btn:active {
     transform: translateY(-2px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba($DarkColor, 0.2);
 }
 
 .scroll-btn {
@@ -81,12 +80,12 @@
     bottom: 20px;
     left: inherit;
     display: none;
-    border: 2px solid #ffffff;
+    border: 2px solid $WhiteColor;
 }
 
 .scroll-btn.scroll-btn-up:before {
     bottom: 0;
-    border: 2px solid #ffffff;
+    border: 2px solid $WhiteColor;
     border-width: 2px 2px 0px 0px;
     margin: auto;
     top: 10px;

@@ -1,57 +1,93 @@
-.section-col {
+.main-section{
+    padding: 0 20px;
+}
+.section-banner {
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 15px;
     height: 100vh;
 }
 
-.first-section {
-    background: $PrimaryColor;
+.banner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-image: linear-gradient(to right bottom, rgba($PrimaryColor, 0.7), rgba($SecondaryColor, 0.7)), url(../img/banner.png);
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    position: relative;
+    overflow: hidden;
 
-    .first-section-inner {
+    &__inner {
+        position: absolute;
+        top: 45%;
+        transform: translateY(-50%);
+        text-align: center;
         width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #ffffff;
-        margin-top: 15px;
-        margin-bottom: 15px;
-        background-image: linear-gradient(to right bottom, rgba($PrimaryColor, 0.7), rgba($SecondaryColor, 0.7)), url(../img/oriental-tiles.png);
-        clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-        position: relative;
-        overflow: hidden;
 
-        .first-section-box {
-            position: absolute;
-            top: 45%;
-            transform: translateY(-50%);
-            text-align: center;
-            width: 100%;
-
-            .title {
-                font-size: 60px;
-                letter-spacing: 20px;
-                text-transform: uppercase;
-                font-weight: 300;
-                animation: slideInLeft 1s ease-in-out;
-            }
-            .subtitle {
-                font-size: 20px;
-                letter-spacing: 10px;
-                text-transform: uppercase;
-                font-weight: 700;
-                animation: slideInRight 1s ease-in-out;
-                margin-bottom: 40px;
-            }
+        &--title {
+            font-size: 60px;
+            letter-spacing: 20px;
+            text-transform: uppercase;
+            font-weight: 300;
+            animation: slideInLeft 1s ease-in-out;
+        }
+        &--subtitle {
+            font-size: 20px;
+            letter-spacing: 10px;
+            text-transform: uppercase;
+            font-weight: 700;
+            animation: slideInRight 1s ease-in-out;
+            margin-bottom: 40px;
         }
     }
 }
 
+.section-scale{
+    background-color:$TertiaryColor;
+    padding-top:calc(25vh + 100px);
+    padding-bottom:100px;
+    margin-top:-25vh;
 
-.second-section {
-    background: $PrimaryColor;
+    [class^="col-"]{
+        background-color: $DarkColor;
+        text-align:center;
+        padding:10px;
+        color:$WhiteColor;
+    }
+}
+
+.section-about{
+    padding:100px 0 250px;
+    background-color: $GrayColor-1;
+}
+
+.section-features{
+    padding: 250px 0;
+    background-image: linear-gradient(to right bottom, rgba($PrimaryColor, 0.8), rgba($SecondaryColor, 0.8)),
+    url(../img/image-5.png);
+    background-size: cover;
+    transform: skewY(-6deg);
+    margin-top: -100px;
+
+    & > *{
+        transform: skewY(6deg);
+    }
+}
+
+.section-tours{
+    background-color: $GrayColor-1;
+    padding: 250px 0 150px 0;
+    margin-top: -100px;
+}
+
+.section-stories {
+    position: relative;
+    padding: 150px 0;
 }

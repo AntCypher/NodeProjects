@@ -1,0 +1,1 @@
+module.exports = __webpack_public_path__ + "static/media/difference-between-gatsbyjs-and-nextjs.50690707.md";

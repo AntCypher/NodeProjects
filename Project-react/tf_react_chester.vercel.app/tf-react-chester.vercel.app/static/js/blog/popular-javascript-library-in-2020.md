@@ -1,0 +1,1 @@
+module.exports = __webpack_public_path__ + "static/media/popular-javascript-library-in-2020.fd4b6a65.md";

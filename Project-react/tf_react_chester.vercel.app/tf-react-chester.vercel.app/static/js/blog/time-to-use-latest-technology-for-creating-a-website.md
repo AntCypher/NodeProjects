@@ -1,0 +1,1 @@
+module.exports = __webpack_public_path__ + "static/media/time-to-use-latest-technology-for-creating-a-website.cfac748a.md";

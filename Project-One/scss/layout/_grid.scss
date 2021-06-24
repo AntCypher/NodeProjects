@@ -1,34 +1,55 @@
 .container,
 .container-full {
     width: 100%;
-    padding-right: calc($ant-gutter-x / 2);
-    padding-left: calc($ant-gutter-x / 2);
+    padding-right: $col-gutter / 2;
+    padding-left: $col-gutter / 2;
     margin-right: auto;
     margin-left: auto;
 }
 
 .container {
-    max-width: 1320px;
+    max-width: $container-width;
 }
 
 .row {
     display: flex;
     flex-wrap: wrap;
-    margin-top: calc($ant-gutter-y * -1);
-    margin-right: calc($ant-gutter-x / -2);
-    margin-left: calc($ant-gutter-x / -2);
+
+    &:not(:last-child){
+        margin-bottom:$col-gutter * 2;
+    }
 }
 
-.row>* {
+[class^="col-"] {
     flex-shrink: 0;
     width: 100%;
     max-width: 100%;
-    padding-right: calc($ant-gutter-x / 2);
-    padding-left: calc($ant-gutter-x / 2);
-    margin-top: $ant-gutter-y;
+
+    &:not(:last-child){
+        margin-right:$col-gutter;
+    }
 }
 
-.g-0 {
-    $ant-gutter-x: 0;
-    $ant-gutter-y: 0;
+.col-1-of-2 {
+    max-width: calc((100% - #{$col-gutter}) / 2);
+}
+
+.col-1-of-3 {
+    max-width: calc((100% - 2 * #{$col-gutter}) / 3 );
+}
+
+.col-2-of-3 {
+    max-width: calc(2 * (100% - 2 * #{$col-gutter}) / 3 + #{$col-gutter});
+}
+
+.col-1-of-4 {
+    max-width: calc((100% - 3 * #{$col-gutter}) / 4 );
+}
+
+.col-2-of-4 {
+    max-width: calc(2 * (100% - 3 * #{$col-gutter}) / 4 +  #{$col-gutter});
+}
+
+.col-3-of-4 {
+    max-width: calc(3 * (100% - 3 * #{$col-gutter}) / 4 + 2 * #{$col-gutter});
 }

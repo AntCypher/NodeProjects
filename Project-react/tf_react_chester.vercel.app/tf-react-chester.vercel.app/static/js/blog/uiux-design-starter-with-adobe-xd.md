@@ -1,0 +1,1 @@
+module.exports = __webpack_public_path__ + "static/media/uiux-design-starter-with-adobe-xd.05dd671b.md";

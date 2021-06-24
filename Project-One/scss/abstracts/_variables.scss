@@ -1,12 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
-$WhiteColor: #ffffff;       /* White Color */
-$BlackColor: #000000;       /* Black Color */
-$DarkColor: #001F3D;        /* Misty Blue Color */
-$PrimaryColor: #325980;     /* Coral Color */
-$SecondaryColor: #D4C2B0;   /* Teal Green Color */
-$TertiaryColor: #777180;    /* Ivory Color */
+$WhiteColor: #ffffff;           /* White Color */
+$BlackColor: #000000;           /* Black Color */
+$DarkColor: #073B4C;            /* Midnight Green Eagle Green */
+$GrayColor-1: #fcfcfc;          /* Gray Color */
 
-$RalewayFont: 'Raleway', sans-serif;
+$PrimaryColor: #06D6A0;         /* Caribbean Green */
+$PrimaryColorDark: #048B67;    /* Spanish Viridian */
 
-$ant-gutter-x: 20px;
-$ant-gutter-y: 0;
+$SecondaryColor: #118AB2;       /* Blue NCS */
+$SecondaryColorDark: #0A5770;  /* Blue Sapphire */
+
+$TertiaryColor: #FFD166;        /* Orange Yellow Crayola */
+$TertiaryColorDark: #A37200;   /* Gold */
+
+$UbuntuFont: 'Ubuntu', sans-serif;
+
+$container-width:1240px;
+$col-gutter: 40px;

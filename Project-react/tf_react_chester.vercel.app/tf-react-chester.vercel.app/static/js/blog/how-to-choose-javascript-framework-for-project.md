@@ -1,0 +1,1 @@
+module.exports = __webpack_public_path__ + "static/media/how-to-choose-javascript-framework-for-project.0936e963.md";

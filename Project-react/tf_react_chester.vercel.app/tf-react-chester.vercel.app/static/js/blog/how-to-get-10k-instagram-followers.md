@@ -1,0 +1,1 @@
+module.exports = __webpack_public_path__ + "static/media/how-to-get-10k-instagram-followers.7e2c3fc5.md";
