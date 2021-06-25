@@ -11,6 +11,8 @@ https://megaone.acrothemes.com/
 https://codepen.io/designfenix/pen/VwexeVa
 https://codepen.io/sumanengbd/pen/bYLNpR
 https://www.solodev.com/blog/tags/Slick-Slider.stml
+https://codepen.io/PaulBarrett79/pen/WdWYaO
+
 
 # vue js
 
