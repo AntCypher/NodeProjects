@@ -1,0 +1,21 @@
+.test_photo:hover {
+    outline: 10px solid red;
+    transform: scale(1.05) translateY(-0.5px);
+    box-shadow: 0px 25px 40px rgba(0, 0, 0, .5);
+    z-index: 20px;
+}
+
+.test:hover .test_photo:not(:hover){
+    transform: scale(.95);
+}
+
+
+.card{
+    perspective: 1500px;
+    -moz-perspective: 1500px;
+}
+
+.story{
+    backface-visibility: hidden;
+}
+

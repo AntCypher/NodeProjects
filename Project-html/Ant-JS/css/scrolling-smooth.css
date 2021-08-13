@@ -1,0 +1,20 @@
+.section-col{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:0 15px;height:calc(100vh - 99px);}
+.first-section{background: var(--SecondaryColor);}
+.second-section{background: var(--PrimaryColor);}
+.third-section{background: var(--SecondaryColor);}
+.fourth-section{background: var(--PrimaryColor);}
+.fifth-section{background: var(--SecondaryColor);}
+.sixth-section{background: var(--PrimaryColor);}
+.seventh-section{background: var(--SecondaryColor);}
+
+
+/****************************************
+* Scroll Smooth
+****************************************/
+.scroll-menu{position: fixed;left: 0;right: 0;top: 0;padding:0px;margin: 0px;z-index: 99;}
+.scroll-menu .header__menu{margin: 5px;list-style: none;display: flex;flex-wrap: wrap;justify-content: center;padding:30px 0px;border:1px solid var(--DarkColor);background-color:var(--SecondaryColor);border-radius:5px;}
+.scroll-menu .header__menu li{margin: 0 20px;}
+.scroll-menu .header__menu li:first-child{margin-left: 0;}
+.scroll-menu .header__menu li:last-child{margin-right: 0;}
+.scroll-menu .header__menu a{text-decoration: none;font-weight: 400;text-transform: uppercase;color: var(--PrimaryColor);}
+.scroll-menu .header__menu a:hover{color: var(--DarkColor);}

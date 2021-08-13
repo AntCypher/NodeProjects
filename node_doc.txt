@@ -1,0 +1,7 @@
+Simple Server
+---*-----*---
+
+npm init  ( project create karva mate )
+
+npm start ( serverni file banaya pachi server run karva mate )
+
