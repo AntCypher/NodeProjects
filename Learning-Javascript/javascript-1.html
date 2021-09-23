@@ -4,9 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript</title>
+    <title>JavaScript 1</title>
 
     <script>
+
+
+        // 14. 'if-else' statement
+
+        function is_leap_year(year){
+            if(year % 400 == 0){
+                return true;
+            } else if ((year % 400 == 0) && (year % 100 == 00)){
+                return true;
+            } else{
+                return false;
+            }
+        }
+
+        // 15. 'switch' statement
+
         function day_of_week_1(day){
             switch(day){
                 case 1: return "Monday";
@@ -61,8 +77,80 @@
             }
         }
 
-        
+
+        // 16. The 'while' loop
+        function while_loop(){
+            var i = 1;
+            while ( i <= 10 ){
+                console.log(i);
+                i++;
+            }
+        }
+
+        // 17. The 'for' loop
+
+        function for_loop(){
+            for(var m = 2; m <= 20; m++){
+                console.log(m);
+            }
+        }
+
+        // 18. 'break' and 'continue'
+
+        function for_using_brack_loop(){
+            for(var m = 2; m <= 20; m++){
+                if(m == 10){
+                    break;
+                }
+                if(m == 6){
+                    continue;
+                }
+                console.log(m);
+            }
+        }
+        function for_using_brack_loop_example(){
+            for (var i=10; i<=12; i++) {
+                if (i==11) {
+                    continue;
+                }
+                i++;
+                console.log(i);
+            }
+        }
+
+        // 20. Variable Scope
+
+        function blog_scope(){
+            if(true){
+                var x = 10;
+            } else {
+                x = 6;
+                console.log(x);
+            }
+        }
+
+        function function_scope(){
+            var x;
+            if(true){
+                x = 5;
+            } else {
+                x = 6;
+                console.log(x);
+            }
+        }
+
+        // 21. Type Conversion
+
+        // "4" * "10"
+        // "4" * 20
+        // "5" + "5"
+        // "5" + 5
+        // 5 + 5
+
+
     </script>
+
+    <script src="Assignment+Solution+1/assignment_solution_1.js"></script>
 
 </head>
 <body>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 2</title>
+
+    <script>
+
+        var book = {title : "The Three Musketeers", author: "Alexandre Dumas", price: "$49"}
+            for(var p in book) {
+            console.log(p + ": " + book[p]);
+        }
+
+        // 27. JSON- Javascript Object Notation
+
+        var book_as_str = "";
+
+        var book_as_str = '{"Title" : "A JSON File" , "Auther" : "Charles Dickens", "Price" : 29}';
+
+        var book_as_str = "{\"Title\" : \"A JSON File\" , \"Auther\" : \"Charles Dickens\", \"Price\" : 29}";
+
+        var book = JSON.parse(book_as_str);
+
+
+        // 29. Arrays in Javascript
+
+        my_aeeay = [];
+        my_aeeay[0] = "test1";
+        my_aeeay[1] = true;
+        my_aeeay[2] = 4;
+
+        // 36. Sorting arrays
+
+        var mysortarray = [10,5,20,30,56,4,9,445,63];
+
+        function mysortarray_sort() {
+            mysortarray.sort();
+            console.log(mysortarray);
+        }
+
+        function mysortarray_sort_plush(a,b) {
+            return (a-b);
+        }
+        console.log(mysortarray.sort(mysortarray_sort_plush));
+
+        function mysortarray_sort_minash(a,b) {
+            return (b-a);
+        }
+        console.log(mysortarray.sort(mysortarray_sort_minash));
+
+        
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

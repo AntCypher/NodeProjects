@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 5</title>
+
+    <script>
+
+        // 58. Error handling
+
+        function error_sum() {
+            var args = Array.prototype.slice.call(arguments);
+            return args.reduce(function(prev,curr) {
+                    return prev + curr;
+            }, 0);
+        }
+
+        function error_sum_nan() {
+            var args = Array.prototype.slice.call(arguments);
+            return args.reduce(function(prev,curr) {
+                if(!isNaN(curr)){
+                    return prev + curr;
+                } else {
+                    throw Error("Non-numeric argument: " + curr);
+                }
+                    
+            }, 0);
+        }
+
+        function test() {
+            error_sum_nan(2, 10, 5, "s");
+            console.log("doing something else");
+        }
+
+        function test_try_catch() {
+            try{
+                error_sum_nan(2, 10, 5, "s");
+            } catch(error){
+                console.log(error);
+            }
+            console.log("doing something else");
+            
+        }
+
+        // 60. DOM: Document Object Model
+
+        document.getElementById("IdName");
+        document.getElementsByName("name");
+        document.getElementsByClassName("ClassName");
+
+        // 61. A simple slideshow
+
+        
+
+        
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

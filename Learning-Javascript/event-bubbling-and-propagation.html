@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Event bubbling and propagation</title>
+
+        <script>
+
+            function changeBgColor(event) {
+                var red = '#FE2E2E';
+                this.style.backgroundColor = "red";
+                event.stopPropagation();
+            }
+
+            function load() {
+                // document.getElementById("id_name").onclick = changeBgColor;
+                document.getElementById("id_name").addEventListener('click', changeBgColor);
+                document.getElementById("txt1").onclick = changeBgColor;
+                document.getElementById("txt2").onclick = changeBgColor;
+                document.getElementById("goolge_link").addEventListener('click', function(event) {console.log("I will not let you!"); event.preventDefault()});
+            }
+
+            window.addEventListener("load", load);
+            window.addEventListener("click", function() {console.log("Clicked on the page...");});
+
+        </script>
+
+    </head>
+    <body>
+
+        <div>
+            <span id="txt1" class="txt1">Tis is first part of the text.</span><span id="txt2" class="txt2"> And this is the second part.</span>
+
+            <form>
+                <input id="id_name" type="text">
+            </form>
+            <a id="goolge_link" href="http://www.google.com">Goto Google.com</a>
+
+        </div>
+
+
+    </body>
+</html>

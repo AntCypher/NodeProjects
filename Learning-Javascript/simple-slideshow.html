@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A simple slideshow</title>
+
+    <script>
+        var pictures =["https://dummyimage.com/1400x700/cccccc/000000.jpg&text=1", "https://dummyimage.com/1400x700/cccccc/000000.jpg&text=2", "https://dummyimage.com/1400x700/cccccc/000000.jpg&text=3"]
+
+        function load(){
+            // document.getElementById("simple_slider").getElementsByTagName("img")[0].src = pictures[0];
+            changePic(0);
+        }
+
+        function changePic(n){
+            document.getElementById("simple_slider").getElementsByTagName("img")[0].src = pictures[n % pictures.length];
+            setTimeout(function() {changePic(n+1);}, 5000);
+        }
+
+    </script>
+
+</head>
+<body onload="load()">
+    <section>
+        <div id="simple_slider">
+            <img style="width: 100vw;height: 100vh;object-fit: cover;">
+        </div>
+    </section>
+
+</body>
+</html>

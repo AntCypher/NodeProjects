@@ -60,65 +60,65 @@
                 background-image: linear-gradient(to right bottom, $TertiaryColor, $TertiaryColorDark), url(../img/image-4.png);
             }
         }
-
-        &--heading{
-            font-size: 28px;
-            font-weight: 300;
-            text-transform: uppercase;
-            text-align: right;
-            color: $WhiteColor;
-            position: absolute;
-            top: 120px;
-            right: 20px;
-            width: 75%;
-            letter-spacing: 2px;
-
-            &-span{
-                padding: 10px 15px;
-                -webkit-box-decoration-break: clone;
-                box-decoration-break: clone;
-
-                &--1{
-                    background-image: linear-gradient(to right bottom,
-                    rgba($PrimaryColor, .85),
-                    rgba($PrimaryColorDark, .85));
-                }
-                &--2 {
-                    background-image: linear-gradient(to right bottom,
-                            rgba($SecondaryColor, .85),
-                            rgba($SecondaryColorDark, .85));
-                }
-                &--3 {
-                    background-image: linear-gradient(to right bottom,
-                            rgba($TertiaryColor, .85),
-                            rgba($TertiaryColorDark, .85));
-                }
-            }
-        }
-
-        &--details{
-            padding: 30px;
-
-            ul{
-                list-style: none;
-                width: 80%;
-                margin: 0 auto;
-                padding: 0;
-
-                li{
-                    text-align: center;
-                    font-size: 15px;
-                    padding: 10px;
-                    color: $DarkColor;
-
-                    &:not(:last-child){
-                        border-bottom: 1px solid rgba($DarkColor, 0.1);
-                    }
-                }
-            }
-        }
-
     }
+
+    &__heading{
+        font-size: 28px;
+        font-weight: 300;
+        text-transform: uppercase;
+        text-align: right;
+        color: $WhiteColor;
+        position: absolute;
+        top: 120px;
+        right: 20px;
+        width: 75%;
+        letter-spacing: 2px;
+
+        &-span{
+            padding: 10px 15px;
+            -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
+
+            &--1{
+                background-image: linear-gradient(to right bottom,
+                rgba($PrimaryColor, .85),
+                rgba($PrimaryColorDark, .85));
+            }
+            &--2 {
+                background-image: linear-gradient(to right bottom,
+                        rgba($SecondaryColor, .85),
+                        rgba($SecondaryColorDark, .85));
+            }
+            &--3 {
+                background-image: linear-gradient(to right bottom,
+                        rgba($TertiaryColor, .85),
+                        rgba($TertiaryColorDark, .85));
+            }
+        }
+    }
+
+    &__details{
+        padding: 30px;
+
+        ul{
+            list-style: none;
+            width: 80%;
+            margin: 0 auto;
+            padding: 0;
+
+            li{
+                text-align: center;
+                font-size: 15px;
+                padding: 10px;
+                color: $DarkColor;
+
+                &:not(:last-child){
+                    border-bottom: 1px solid rgba($DarkColor, 0.1);
+                }
+            }
+        }
+    }
+
     &:hover &__side--front {
         transform: rotateY(-180deg);
     }
@@ -126,22 +126,29 @@
         transform: rotateY(0);
     }
 
-    &__price-box{
+    &__cta{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
         text-align: center;
+    }
+
+    &__price-box{
         color: $WhiteColor;
         margin-bottom: 80px;
     }
 
-    &__price-title {
-        font-size: 16px;
-        font-weight: 500;
+    &__price-only {
+        font-size: 14px;
         letter-spacing: 2px;
         text-transform: uppercase;
     }
 
     &__price-value {
         font-size: 60px;
-        font-weight: 300;
+        font-weight: 200;
     }
 
 }

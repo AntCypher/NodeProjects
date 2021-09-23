@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 3</title>
+
+    <script>
+        
+
+        // 40. Higher Order functions
+
+        function num_printer(upto) {
+            for(var i = 0;i <= 10;i++){
+                console.log(i);
+            }
+        }
+
+        function odd_num_printer(upto) {
+            
+            for(var i = 0;i <= 10;i++){
+                if(i % 2 != 0){
+                    console.log(i);
+                }
+            }
+        }
+
+        // --------------------------
+
+        function is_odd_num(upto, filter) {
+            for(var i = 1; i <= upto; i++){
+                if(filter(i)){
+                    console.log(i);
+                }
+            }
+        }
+
+        function is_odd(n) {
+            return n % 2 != 0;
+        }
+
+        // 43. Closures
+
+        var scope ="global scope";
+
+        function check_scope() {
+            var scope = "Local scope";
+            function f() {
+                return scope;
+            }
+            return f;
+        }
+
+        // 45. List Comprehension - filter function
+
+        function iseven(elem) {
+            return elem%2 == 0;
+        }
+        [2,54,9,6,2,4,3,9,87,45,63,86,6].filter(iseven);
+        // or 
+        [2,54,9,6,2,4,3,9,87,45,63,86,6].filter( function iseven(elem) {
+            return elem%2 == 0;
+        });
+
+        function iseven(current,index,array) {
+            console.log(current + " :: " + index + " ::  " + array);
+            return current%2 == 0;
+        }
+        
+
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>
