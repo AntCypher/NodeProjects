@@ -1,4 +1,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap");
+@font-face {
+  font-family: 'Splide';
+  src: url("../fonts/SplideHeading.eot");
+  src: url("../fonts/SplideHeading.eot?#iefix") format("embedded-opentype"), url("../fonts/SplideHeading.woff2") format("woff2"), url("../fonts/SplideHeading.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap; }
+
+@font-face {
+  font-family: 'SplideCode';
+  src: url("../fonts/SplideCode.eot");
+  src: url("../fonts/SplideCode.eot?#iefix") format("embedded-opentype"), url("../fonts/SplideCode.woff2") format("woff2"), url("../fonts/SplideCode.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; }
+
+@font-face {
+  font-family: 'Splide';
+  src: url("../fonts/SplideBody.eot");
+  src: url("../fonts/SplideBody.eot?#iefix") format("embedded-opentype"), url("../fonts/SplideBody.woff2") format("woff2"), url("../fonts/SplideBody.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; }
+
 /* White Color */
 /* Black Color */
 /* Midnight Green Eagle Green */
@@ -76,7 +100,7 @@ i {
 
 body {
   margin: 0;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Splide", sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
@@ -321,7 +345,7 @@ p {
         background-image: linear-gradient(to right bottom, #FFD166, #A37200), url(../img/image-4.png); }
   .card__heading {
     font-size: 28px;
-    font-weight: 300;
+    font-weight: normal;
     text-transform: uppercase;
     text-align: right;
     color: #ffffff;
@@ -374,7 +398,7 @@ p {
     text-transform: uppercase; }
   .card__price-value {
     font-size: 60px;
-    font-weight: 200; }
+    font-weight: normal; }
 
 .story {
   width: 80%;
@@ -476,7 +500,7 @@ p {
 
 .form__label {
   font-size: 12px;
-  font-weight: 700;
+  font-weight: normal;
   margin-left: 20px;
   margin-top: 7px;
   display: block; }
@@ -528,8 +552,6 @@ p {
 .container,
 .container-full {
   width: 100%;
-  padding-right: 30px;
-  padding-left: 30px;
   margin-right: auto;
   margin-left: auto; }
 
@@ -567,6 +589,46 @@ p {
 .col-3-of-4 {
   max-width: calc(3 * (100% - 3 * 60px) / 4 + 2 * 60px); }
 
+.footer {
+  background-color: #073B4C;
+  padding: 100px 0;
+  font-size: 14px; }
+  .footer__logo-box {
+    text-align: center;
+    margin-bottom: 80px; }
+  .footer__logo {
+    width: 150px;
+    height: auto; }
+  .footer__navigation {
+    border-top: 1px solid #ffffff;
+    padding-top: 20px;
+    display: inline-block; }
+  .footer__list {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+  .footer__item {
+    display: inline-block; }
+    .footer__item:not(:last-child) {
+      margin-right: 15px; }
+  .footer__link:link, .footer__link:visited {
+    color: #ffffff;
+    background-color: #073B4C;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    transition: all 0.2s; }
+  .footer__link:hover, .footer__link:active {
+    color: #06D6A0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    transform: rotate(5deg) scale(1.3); }
+  .footer__copyright {
+    color: #ffffff;
+    border-top: 1px solid #ffffff;
+    padding-top: 20px;
+    width: 80%;
+    float: right; }
+
 .main-section {
   padding: 0 20px; }
 
@@ -587,7 +649,7 @@ p {
   color: #ffffff;
   margin-top: 15px;
   margin-bottom: 15px;
-  background-image: linear-gradient(to right bottom, rgba(6, 214, 160, 0.7), rgba(17, 138, 178, 0.7)), url(../img/banner.png);
+  background-image: linear-gradient(to right bottom, rgba(6, 214, 160, 0.7), rgba(17, 138, 178, 0.7)), url(../img/hero.jpg);
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   position: relative;
   overflow: hidden; }

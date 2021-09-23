@@ -1,5 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
 
+@font-face {
+    font-family: 'Splide';
+    src: url('../fonts/SplideHeading.eot');
+    src: url('../fonts/SplideHeading.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/SplideHeading.woff2') format('woff2'),
+        url('../fonts/SplideHeading.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SplideCode';
+    src: url('../fonts/SplideCode.eot');
+    src: url('../fonts/SplideCode.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/SplideCode.woff2') format('woff2'),
+        url('../fonts/SplideCode.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Splide';
+    src: url('../fonts/SplideBody.eot');
+    src: url('../fonts/SplideBody.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/SplideBody.woff2') format('woff2'),
+        url('../fonts/SplideBody.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 $WhiteColor: #ffffff;           /* White Color */
 $BlackColor: #000000;           /* Black Color */
 $DarkColor: #073B4C;            /* Midnight Green Eagle Green */
@@ -14,9 +47,9 @@ $SecondaryColorDark: #0A5770;  /* Blue Sapphire */
 $TertiaryColor: #FFD166;        /* Orange Yellow Crayola */
 $TertiaryColorDark: #A37200;   /* Gold */
 
-$SourceSansFont:'Source Sans Pro', sans-serif;
+$SourceSansFont:'Splide', sans-serif;
+$SplideCode:'SplideCode';
 
 $DefultFontSize:16px;
-
 $container-width:1140px;
 $col-gutter: 60px;

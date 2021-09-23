@@ -64,7 +64,7 @@
 
     &__heading{
         font-size: 28px;
-        font-weight: 300;
+        font-weight: normal;
         text-transform: uppercase;
         text-align: right;
         color: $WhiteColor;
@@ -148,7 +148,7 @@
 
     &__price-value {
         font-size: 60px;
-        font-weight: 200;
+        font-weight: normal;
     }
 
 }
