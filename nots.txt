@@ -4,6 +4,9 @@ https://aipthemes.com/filaous/
 https://kreativdev.com/finlance/finlance/index.html
 https://nexgen-html.codings.dev/html
 https://megaone.acrothemes.com/
+https://codepen.io/GeorgePark/pen/VXrwOP
+https://github.com/jonasschmedtmann/advanced-css-course
+https://istockphoto-downloader.beatsnoop.com/
 
 js
 -*-*-*-*-*-*
@@ -12,6 +15,10 @@ https://codepen.io/designfenix/pen/VwexeVa
 https://codepen.io/sumanengbd/pen/bYLNpR
 https://www.solodev.com/blog/tags/Slick-Slider.stml
 
+step js
+-*-*-*-*-*-*
+https://codepen.io/tokoyamy/pen/oOYexJ
+
 vue js
 -*-*-*-*-*-*
 https://mentoring-vuejs.dreamguystech.com/
@@ -19,3 +26,4 @@ https://mentoring-vuejs.dreamguystech.com/
 React js
 -*-*-*-*-*-*
 https://react.pixelstrap.com/endless/dashboard/default
+
