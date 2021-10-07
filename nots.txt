@@ -1,3 +1,9 @@
+Git Project
+-*-*-*-*-*-*
+https://github.com/jonasschmedtmann/advanced-css-course
+https://github.com/eastie71/fictional-university-theme
+https://github.com/LearnWebCode
+
 HTML
 -*-*-*-*-*-*
 https://aipthemes.com/filaous/
@@ -5,8 +11,8 @@ https://kreativdev.com/finlance/finlance/index.html
 https://nexgen-html.codings.dev/html
 https://megaone.acrothemes.com/
 https://codepen.io/GeorgePark/pen/VXrwOP
-https://github.com/jonasschmedtmann/advanced-css-course
 https://istockphoto-downloader.beatsnoop.com/
+https://easings.net/
 
 js
 -*-*-*-*-*-*
