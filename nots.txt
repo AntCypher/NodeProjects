@@ -34,3 +34,7 @@ React js
 -*-*-*-*-*-*
 https://react.pixelstrap.com/endless/dashboard/default
 
+Udemy Project
+-*-*-*-*-*-*
+https://freetutsdownload.com/advanced-wordpress-topics-post-types/ -> https://www.udemy.com/course/advanced-wordpress-topics-post-types-taxonomies-metaboxes/
+
