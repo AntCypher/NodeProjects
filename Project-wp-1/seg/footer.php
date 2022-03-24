@@ -9,8 +9,13 @@
  * @since Seg 1.0
  */
 if ( class_exists( 'acf' ) ) {
-    $hide_lets_talk_section = get_field( 'seg_gens_hide_lets_talk_section', get_the_ID() );
-    $hide_footer_area       = get_field( 'seg_gens_hide_footer_area', get_the_ID() );
+    if ( is_home() || is_archive() ) {
+        $page_id = get_option( 'page_for_posts' );
+    } else {
+        $page_id = get_the_ID();
+    }   
+    $hide_lets_talk_section = get_field( 'seg_gens_hide_lets_talk_section', $page_id );
+    $hide_footer_area       = get_field( 'seg_gens_hide_footer_area', $page_id );
     $footer_logo            = get_field( 'seg_options_site_logo', 'option' );
     $address                = get_field( 'seg_options_address', 'option' );
     $follow_title           = get_field( 'seg_options_s_follow', 'option' );
@@ -99,9 +104,9 @@ if ( class_exists( 'acf' ) ) {
 ?>
 <footer class="main-footer">
     <?php
-    if ( ! $hide_lets_talk_section || is_search() || is_archive() ) {
+    if ( ! $hide_lets_talk_section || is_search() ) {
 
-        if ( is_singular('transactions') ) {
+        if ( is_singular( 'transactions' ) ) {
             ?>
             <section class="letstalk-section" style="background-image: url('<?php echo $single_bg_url; ?>')" >
                 <div class="container">

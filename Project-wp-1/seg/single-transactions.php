@@ -1,41 +1,82 @@
 <?php
 get_header();
-$transaction_id        = get_the_ID();
-$transaction_title     = get_post_type();
-$product_category      = wp_get_post_terms( get_the_ID(), SEG_PRODUCT_TAX, array ( 'fields' => 'all' ) );
-$product_category_id   = $product_category[ 0 ]->term_id;
-$product_category_slug = $product_category[ 0 ]->slug;
-$product_category_name = $product_category[ 0 ]->name;
+$transaction_id             = get_the_ID();
+$transaction_permalink      = get_the_permalink();
+$transaction_title          = get_post_type();
+$product_category           = wp_get_post_terms( $transaction_id, SEG_PRODUCT_TAX, array ( 'fields' => 'all' ) );
+$product_category_id        = $product_category[ 0 ]->term_id;
+$product_category_slug      = $product_category[ 0 ]->slug;
+$product_category_name      = $product_category[ 0 ]->name;
 //echo "<pre>";
 //print_r($product_category);
 //print_r($product_category_id);
 //print_r($product_category_name);
 //echo "</pre>";
-$product_link          = get_term_link( $product_category_id );
-$trasaction_page_link  = get_field( 'seg_options_transaction_page_link', 'options' );
-$bread_title           = get_field( 'seg_trans_bread_title', $transaction_id );
-$banner_title          = get_field( 'seg_trans_banner_title', $transaction_id );
-$banner_content        = get_field( 'seg_trans_banner_content', $transaction_id );
-$testinomial_content   = get_field( 'seg_trans_test_content', $transaction_id );
-$descr_bg_subtext      = get_field( 'seg_trans_des_img_subtext', $transaction_id );
-$descr_logos           = get_field( 'seg_trans_desr_logos', $transaction_id );
-$right_title           = get_field( 'seg_trans_right_title', $transaction_id );
-$left_title            = get_field( 'seg_trans_left_title', $transaction_id );
-$right_content         = get_field( 'seg_trans_right_content', $transaction_id );
-$left_content          = get_field( 'seg_trans_left_content', $transaction_id );
-$trans_slider_hide     = get_field( 'seg_trans_slider_hide', $transaction_id );
-$trans_slider_title    = get_field( 'seg_trans_slider_title', $transaction_id );
-$press_subtitle        = get_field( 'seg_press_subtitle', $transaction_id );
-$press_title           = get_field( 'seg_press_title', $transaction_id );
-$press_content         = get_field( 'seg_press_content', $transaction_id );
-$press_read_cta        = get_field( 'seg_press_read_cta', $transaction_id );
-$video_iframe          = get_field( 'seg_trans_video_iframe', $transaction_id );
-$video_img             = get_field( 'seg_trans_video_img', $transaction_id );
-$video_img_url         = ! empty( $video_img ) ? $video_img[ 'url' ] : '#';
-$video_img_alt         = ! empty( $video_img[ 'alt' ] ) ? $video_img[ 'alt' ] : get_bloginfo();
-$person_name           = get_field( 'seg_trans_video_subtext', $transaction_id );
-$person_designation    = get_field( 'seg_trans_video_designation', $transaction_id );
-$video_subtitle        = get_field( 'seg_trans_video_subtitle', $transaction_id );
+$product_link               = get_term_link( $product_category_id );
+$trasaction_page_link       = get_field( 'seg_options_transaction_page_link', 'options' );
+$bread_title                = get_field( 'seg_trans_bread_title', $transaction_id );
+$banner_title               = get_field( 'seg_trans_banner_title', $transaction_id );
+$banner_content             = get_field( 'seg_trans_banner_content', $transaction_id );
+$testinomial_content        = get_field( 'seg_trans_test_content', $transaction_id );
+$descr_bg_subtext           = get_field( 'seg_trans_des_img_subtext', $transaction_id );
+$descr_logos                = get_field( 'seg_trans_desr_logos', $transaction_id );
+$right_title                = get_field( 'seg_trans_right_title', $transaction_id );
+$left_title                 = get_field( 'seg_trans_left_title', $transaction_id );
+$right_content              = get_field( 'seg_trans_right_content', $transaction_id );
+$left_content               = get_field( 'seg_trans_left_content', $transaction_id );
+$trans_slider_hide          = get_field( 'seg_trans_slider_hide', $transaction_id );
+$trans_slider_title         = get_field( 'seg_trans_slider_title', $transaction_id );
+$press_subtitle             = get_field( 'seg_press_subtitle', $transaction_id );
+$press_title                = get_field( 'seg_press_title', $transaction_id );
+$press_content              = get_field( 'seg_press_content', $transaction_id );
+$press_read_cta             = get_field( 'seg_press_read_cta', $transaction_id );
+$video_iframe               = get_field( 'seg_trans_video_iframe', $transaction_id );
+$video_img                  = get_field( 'seg_trans_video_img', $transaction_id );
+$video_img_url              = ! empty( $video_img ) ? $video_img[ 'url' ] : '#';
+$video_img_alt              = ! empty( $video_img[ 'alt' ] ) ? $video_img[ 'alt' ] : get_bloginfo();
+$person_name                = get_field( 'seg_trans_video_subtext', $transaction_id );
+$person_designation         = get_field( 'seg_trans_video_designation', $transaction_id );
+//$video_subtitle        = get_field( 'seg_trans_video_subtitle', $transaction_id );
+///categories
+$select_product_secondery   = get_field( 'seg_product_secondery', $transaction_id );
+$select_product_second_slug = $select_product_secondery->slug;
+
+$select_vertical_secondery = get_field( 'seg_vertical_secondery', $transaction_id );
+$select_vertical_slug      = $select_vertical_secondery->slug;
+
+$primary_product_cat_obj   = get_post_primary_category( $transaction_id, SEG_PRODUCT_TAX );
+$primary_product_cat       = $primary_product_cat_obj[ 'primary_category' ];
+$primary_product_cat_slug  = $primary_product_cat->slug;
+$primary_vertical_cat_obj  = get_post_primary_category( $transaction_id, SEG_VERTICAL_TAX );
+$primary_vertical_cat      = $primary_vertical_cat_obj[ 'primary_category' ];
+$primary_vertical_cat_slug = $primary_vertical_cat->slug;
+$prim_tax                  = array ();
+if ( ! empty( $primary_product_cat ) ) {
+    $prim_tax[] = $primary_product_cat;
+}
+if ( ! empty( $select_product_secondery ) ) {
+    $prim_tax[] = $select_product_secondery;
+}
+if ( ! empty( $primary_vertical_cat ) ) {
+    $prim_tax[] = $primary_vertical_cat;
+}
+if ( ! empty( $select_vertical_secondery ) ) {
+    $prim_tax[] = $select_vertical_secondery;
+}
+$cat_array = array ();
+foreach ( $prim_tax as $key => $value ) {
+    $link            = get_term_link( $value );
+    $id              = $value->term_id;
+    $taxonomy        = $value->taxonomy;
+    $slug            = $value->name;
+    $name            = strtoupper( $value->name );
+//    $trasaction_href = $trasaction_page_link . '?taxonomy=' . $taxonomy . '&id=' . $id;
+    $trasaction_href = 'https://seg.compview.co/transactions/' . '?taxonomy=' . $taxonomy . '&id=' . $id;
+    if ( $key <= 2 ) {
+        $cat_array[] = '<a class="prim-cat" cat-id="' . $id . '" href="' . $trasaction_href . '">' . $name . '</a>';
+    }
+}
+$cat_array = implode( ' / ', $cat_array );
 ?>
 <div class="main-container">
     <section class="trans-client-info-section">
@@ -66,10 +107,10 @@ $video_subtitle        = get_field( 'seg_trans_video_subtitle', $transaction_id 
                 <div class="col-trans-client-info-right">
                     <div class="client-video-box">
                         <div class="client-video-box-inner">
-                            <?php if(!empty($video_img)) { ?>
-                            <div class="client-video-box-img">
-                                <img src="<?php echo $video_img_url; ?>" alt="<?php echo $video_img_alt; ?>">
-                            </div>
+                            <?php if ( ! empty( $video_img ) ) { ?>
+                                <div class="client-video-box-img">
+                                    <img src="<?php echo $video_img_url; ?>" alt="<?php echo $video_img_alt; ?>">
+                                </div>
                             <?php } ?>
                             <div class="client-video-box-btn">
                                 <a class="popup-modal1" data-fancybox href="#popup-modal-1"><img src="<?php echo get_template_directory_uri(); ?>/images/video-play-icon.png" alt=""></a>
@@ -77,7 +118,7 @@ $video_subtitle        = get_field( 'seg_trans_video_subtitle', $transaction_id 
                                     <!--<a class="mfp-close popup-modal-dismiss" href="#">x</a>-->
                                     <?php if ( ! empty( $video_iframe ) ) { ?>
                                         <div class="client-video-box-popup-box client-video-iframe">
-                                        <?php echo $video_iframe; ?>
+                                            <?php echo $video_iframe; ?>
                                         </div>
                                     <?php } ?>
                                 </div>
@@ -88,14 +129,15 @@ $video_subtitle        = get_field( 'seg_trans_video_subtitle', $transaction_id 
                                 </div>
                             <?php } ?>
                             <?php
-                            if ( ! empty( $video_subtitle ) ) {
-                                $sub_arr = array_map( function ($item) {
-                                    return "<span>" . $item[ 'subtitle' ] . "</span>";
-                                }, $video_subtitle );
-                                $sub_arr = implode( ' / ', $sub_arr );
+//                            if ( ! empty( $video_subtitle ) ) {
+//                                $sub_arr = array_map( function ($item) {
+//                                    return "<span>" . $item[ 'subtitle' ] . "</span>";
+//                                }, $video_subtitle );
+//                                $sub_arr = implode( ' / ', $sub_arr );
+                            if ( ! empty( $cat_array ) ) {
                                 ?>
                                 <div class="client-video-box-info">
-                                    <?php echo $sub_arr; ?>
+                                    <?php echo $cat_array; ?>
                                 </div>
                             <?php } ?>
                         </div>
@@ -225,6 +267,24 @@ $video_subtitle        = get_field( 'seg_trans_video_subtitle', $transaction_id 
     </section>
     <?php if ( ! $trans_slider_hide ) { ?>
         <section class="client-trans-list-section">
+            <?php
+            $args               = array (
+                'post_type'      => SEG_TRANSACTION_POST_TYPE,
+                'order'          => 'ASC',
+                'posts_per_page' => -1,
+                'post__not_in'   => array ( $transaction_id ),
+                'tax_query'      => array (
+                    array (
+                        'taxonomy' => SEG_PRODUCT_TAX,
+                        'field'    => 'term_id',
+                        'terms'    => $product_category_id,
+                    ),
+                ),
+            );
+            $recent_trans_query = new WP_Query( $args );
+            $post_count=$recent_trans_query->post_count;
+            if(! empty($post_count)){
+            ?>
             <div class="container">
                 <div class="row">
                     <?php if ( ! empty( $trans_slider_title ) ) { ?>
@@ -234,34 +294,23 @@ $video_subtitle        = get_field( 'seg_trans_video_subtitle', $transaction_id 
                     <?php } ?>
                     <div class="col-100">
                         <?php
-                        $args               = array (
-                            'post_type'      => SEG_TRANSACTION_POST_TYPE,
-                            'order'          => 'ASC',
-                            'posts_per_page' => -1,
-                            'post__not_in'   => array ( $transaction_id ),
-                            'tax_query'      => array (
-                                array (
-                                    'taxonomy' => SEG_PRODUCT_TAX,
-                                    'field'    => 'term_id',
-                                    'terms'    => $product_category_id,
-                                ),
-                            ),
-                        );
-                        $recent_trans_query = new WP_Query( $args );
                         if ( $recent_trans_query->have_posts() ) {
                             ?>
                             <div class="client-trans-list-carousel">
                                 <?php
                                 while ( $recent_trans_query->have_posts() ) {
                                     $recent_trans_query->the_post();
-                                    $transaction_id        = get_the_ID();
-                                    $trans_images          = get_field( 'seg_trans_images', $transaction_id );
-                                    $trans_highlight       = get_field( 'seg_trans_highlight_cta', $transaction_id );
-                                    $trans_content         = get_the_title();
-                                    $trans_permalink       = get_the_permalink();
-                                    $product_category      = wp_get_post_terms( get_the_ID(), SEG_PRODUCT_TAX, array ( 'fields' => 'all' ) );
-                                    $product_category_id   = $product_category[ 0 ]->term_id;
-                                    $product_category_slug = $product_category[ 0 ]->slug;
+                                    $transaction_id           = get_the_ID();
+                                    $trans_images             = get_field( 'seg_trans_images', $transaction_id );
+                                    $trans_highlight          = get_field( 'seg_trans_highlight_cta', $transaction_id );
+                                    $trans_content            = get_the_title();
+                                    $trans_permalink          = get_the_permalink();
+//                                    $product_category      = wp_get_post_terms( get_the_ID(), SEG_PRODUCT_TAX, array ( 'fields' => 'all' ) );
+//                                    $product_category_id   = $product_category[ 0 ]->term_id;
+//                                    $product_category_slug = $product_category[ 0 ]->slug;
+                                    $primary_product_cat_obj  = get_post_primary_category( $transaction_id, SEG_PRODUCT_TAX );
+                                    $primary_product_cat      = $primary_product_cat_obj[ 'primary_category' ];
+                                    $primary_product_cat_slug = $primary_product_cat->slug;
                                     ?>
                                     <div class="client-trans-list-box">
                                         <div class="item">
@@ -288,7 +337,7 @@ $video_subtitle        = get_field( 'seg_trans_video_subtitle', $transaction_id 
                                                                 </div>
                                                             <?php } ?>
                                                             <div class="transactions-box-contain">
-                                                                <div class="transactions-tag"><?php echo strtoupper( $product_category_slug ); ?></div>
+                                                                <div class="transactions-tag"><?php echo strtoupper( $primary_product_cat_slug ); ?></div>
                                                                 <h6 class="transactions-box-title"><?php echo $trans_content; ?></h6>
                                                                 <?php if ( ! empty( $trans_highlight ) ) { ?>
                                                                     <span class="btn-arrow"><?php echo $trans_highlight; ?><span><img src="<?php echo get_template_directory_uri() ?>/images/btn-arrow.png" alt=""></span></span>
@@ -310,6 +359,7 @@ $video_subtitle        = get_field( 'seg_trans_video_subtitle', $transaction_id 
                     </div>
                 </div>
             </div>
+            <?php } ?>
         </section>
     <?php } ?>
     <?php if ( ! empty( $press_subtitle ) || ! empty( $press_title ) || ! empty( $press_content ) || ! empty( $press_read_cta ) ) {

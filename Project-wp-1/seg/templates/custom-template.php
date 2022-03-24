@@ -13,11 +13,39 @@ if ( ! defined( 'ABSPATH' ) )
 get_header();
 ?>
 <?php
+//$video_subtitle = get_field( 'title' );
+//
+//echo "<pre>";
+//print_r( $video_subtitle );
+//echo "</pre>";
+//$arrr = [];
+//foreach ( $video_subtitle as $key => $value ) {
+//    $arrr[] = $value[ 'subtitle' ];
+//}
+//
+//$arrr = implode( ' / ', $arrr );
+//echo "<pre>";
+//print_r( $arrr );
+//echo "</pre>";
+//
+//if ( ! empty( $video_subtitle ) ) {
+//    $sub_arr = array_map( function ($item) {
+//        return "<span>" . $item[ 'subtitle' ] . "</span>";
+//    }, $video_subtitle );
+//}
+//echo "<pre>";
+//print_r( $sub_arr );
+//echo "</pre>";
+//$sub_arr      = implode( ' / ', $sub_arr );
+//echo "<pre>";
+//print_r( $sub_arr );
+//echo "</pre>";
+//    --------------------------------------
 $page_id      = get_the_ID();
 $page_title   = get_the_title();
 $page_content = get_the_content();
 $page_link    = get_the_permalink();
-$categories   = get_categories( 
+$categories   = get_categories(
         array (
             'hide_empty' => true,
         )
@@ -30,17 +58,17 @@ if ( class_exists( 'acf' ) ) {
 <div class="flooring-blog-cat-tab">
     <ul>
         <li class="cat-list_item active" data-slug="">All</li>
-        <?php
-        if ( ! empty( $categories ) ) {
-            foreach ( $categories as $key => $category ) {
-                ?>
+<?php
+if ( ! empty( $categories ) ) {
+    foreach ( $categories as $key => $category ) {
+        ?>
                 <a href="<?php echo get_category_link( $category ); ?>">
                     <li class="cat-list_item" data-slug="<?php echo $category->slug; ?>"><?php echo $category->name; ?></li>
                 </a>
-                <?php
-            }
-        }
-        ?>
+        <?php
+    }
+}
+?>
     </ul>
 </div>
 <?php
@@ -79,20 +107,20 @@ if ( $loop->have_posts() ) {
 }
 ?>
 <div class="pagination">
-    <?php
-    echo paginate_links( array (
-        'base'         => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
-        'total'        => $loop->max_num_pages,
-        'current'      => max( 1, get_query_var( 'paged' ) ),
-        'format'       => '?paged=%#%',
-        'show_all'     => false,
-        'prev_next'    => true,
-        'prev_text'    => sprintf( '<i></i> %1$s', __( '>>', 'text-domain' ) ),
-        'next_text'    => sprintf( '%1$s <i></i>', __( '<<', 'text-domain' ) ),
-        'add_args'     => false,
-        'add_fragment' => '',
-    ) );
-    ?>
+<?php
+echo paginate_links( array (
+    'base'         => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
+    'total'        => $loop->max_num_pages,
+    'current'      => max( 1, get_query_var( 'paged' ) ),
+    'format'       => '?paged=%#%',
+    'show_all'     => false,
+    'prev_next'    => true,
+    'prev_text'    => sprintf( '<i></i> %1$s', __( '>>', 'text-domain' ) ),
+    'next_text'    => sprintf( '%1$s <i></i>', __( '<<', 'text-domain' ) ),
+    'add_args'     => false,
+    'add_fragment' => '',
+) );
+?>
 </div>
 
 <!--custom Template-->

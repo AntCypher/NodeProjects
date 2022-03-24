@@ -6,8 +6,8 @@
  * @subpackage SEG
  * @since Seg 1.0
  */
-$image = get_the_post_thumbnail_url();
-$image = empty($image) ? "/wp-content/uploads/2022/03/SEG-logo-new.png" : '';
+$image = get_the_post_thumbnail_url(get_the_ID());
+$image = empty($image) ? "/wp-content/uploads/2022/03/SEG-logo-new.png" : $image;
 ?>
 <div class="col-33">
     <div class="research-overview-box">

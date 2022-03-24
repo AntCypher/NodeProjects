@@ -3,7 +3,87 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 jQuery(document).ready(function ($) {
+    console.log("inin ready");
+
+    if (jQuery('.single-transactions').length > 0) {
+        if (window.location.href.indexOf('#video') > 0) {
+            jQuery(document).find('.popup-modal1').trigger('click');
+        }
+    }
+    if (jQuery('.page-template-transaction-template').length > 0) {
+        console.log("inin if");
+        if (window.location.href.indexOf('?taxonomy') > 0) {
+            var tax = getUrlParameter('taxonomy');
+//            var cat = getUrlParameter('category');
+            var id = getUrlParameter('id');
+            if (tax == 'product') {
+                jQuery(document).find('#productcat').val(id);
+            } else if (tax == 'vertical') {
+                jQuery(document).find('#verticalcat').val(id);
+            }
+            setTimeout(function () {
+//                console.log('timeout 5');
+                jQuery(document).find('#productcat').trigger('change');
+                jQuery(document).find('#verticalcat').trigger('change');
+                jQuery('html,body').animate({
+//                    scrollTop: jQuery(document).height()
+                    scrollTop: 400
+                }, 200);
+            }, 500);
+
+        }
+    }
+
+
+    jQuery(function ($) {
+        var top = $('.left-socialMedia-wrapper').offset().top - parseFloat($('.left-socialMedia-wrapper').css('marginTop').replace(/auto/, 0));
+        var footTop = $('.related-articles-section').offset().top - parseFloat($('.related-articles-section').css('marginTop').replace(/auto/, 0));
+
+        var maxY = footTop - $('.left-socialMedia-wrapper').outerHeight();
+
+        $(window).scroll(function (evt) {
+            var y = $(this).scrollTop();
+            if (y > top) {
+
+                //Quand scroll, ajoute une classe ".fixed" et supprime le Css existant 
+                if (y < maxY) {
+                    $('.left-socialMedia-wrapper').addClass('fixed').removeAttr('style');
+                } else {
+
+                    //Quand la sidebar arrive au footer, supprime la classe "fixed" précèdement ajouté
+                    $('.left-socialMedia-wrapper').removeClass('fixed').css({
+                        position: 'absolute',
+                        top: (maxY - top) + 'px'
+                    });
+                }
+            } else {
+                $('.left-socialMedia-wrapper').removeClass('fixed');
+            }
+        });
+    });
+
+
+    // blog-tags-slider
+    // const sliderBT = $(".blog-tags-search .tags-list");
+    // sliderBT
+    //   .slick({
+    //     dots: true,
+    //     infinite: false,
+    //     variableWidth: true
+    //   });
+
+    // sliderBT.on('wheel', (function(e) {
+    //   e.preventDefault();
+
+    //   if (e.originalEvent.deltaY < 0) {
+    //     $(this).slick('slickPrev');
+    //   } else {
+    //     $(this).slick('slickNext');
+    //   }
+    // }));
+    // blog-tags-slider-end
 
     //transaction category filter
     var pagenumber = 1;
@@ -74,6 +154,9 @@ jQuery(document).ready(function ($) {
             }
         });
     }, 500));
+
+
+
 
     //research category filter
     jQuery(document).on('change', '#reporttax , #frequencytax', '#industrytax', function () {
@@ -221,7 +304,10 @@ jQuery(document).ready(function ($) {
     // people-modal-end
 
     jQuery(".header-search .header-search-icon").click(function () {
-        jQuery(this).parents('.header-search').find('.header-search-form').fadeToggle();
+        jQuery(this).parents('.header-search').find('.header-search-form').fadeIn();
+    });
+    jQuery(".header-search .header-search-close").click(function () {
+        jQuery(this).parents('.header-search').find('.header-search-form').fadeOut();
     });
     /*Navigation */
     $('.menu-icon').on('click', function (e) {
@@ -255,6 +341,39 @@ jQuery(document).ready(function ($) {
         $(this).toggleClass("active");
         return false
     });
+
+    var $slider = jQuery('.ty-seg-slider');
+
+    if ($slider.length) {
+      var currentSlide;
+      var slidesCount;
+      var sliderCounter = document.createElement('div');
+      sliderCounter.classList.add('slider__counter');
+      
+      var updateSliderCounter = function(slick, currentIndex) {
+        currentSlide = slick.slickCurrentSlide() + 1;
+        slidesCount = slick.slideCount;
+        jQuery(sliderCounter).text(currentSlide + '/' +slidesCount)
+      };
+
+      $slider.on('init', function(event, slick) {
+        $slider.append(sliderCounter);
+        updateSliderCounter(slick);
+      });
+
+      $slider.on('afterChange', function(event, slick, currentSlide) {
+        updateSliderCounter(slick, currentSlide);
+      });
+
+      $slider.slick({   prevArrow: '<button class="slick-prev slick-arrow"><span></span></button>',
+         nextArrow: '<button class="slick-next slick-arrow"><span></span></button>',});
+    }
+
+
+    $(".slider__counter").wrap('<div class="slider__counter_wrap"></div>');
+    $('.ty-seg-slider button.slick-prev').insertBefore('.slider__counter');
+    $('.ty-seg-slider button.slick-next').insertAfter('.slider__counter');
+
     /* client quote carousel */
     jQuery('.trans-client-quote-carousel').slick({
         slidesToShow: 1,
@@ -349,6 +468,26 @@ jQuery(document).ready(function ($) {
     equalheight('.transactions-box-title');
     equalheight('.research-overview-box-contain');
 });
+
+// jQuery(window).load(function ($) {
+   
+
+// });
+
+jQuery(window).on('load resize scroll', function(){
+var header = jQuery('.main-header').outerHeight()+'px';
+jQuery('.header-space').css('margin-top', header);
+});  
+
+jQuery(window).scroll(function () {
+  var sc = jQuery(window).scrollTop ()
+  if (sc > 100) {
+    jQuery(".main-header").addClass("fixed")
+  } else {
+    jQuery(".main-header").removeClass("fixed")
+  }
+});
+
 equalheight = function (container) {
     var currentTallest = 0,
             currentRowStart = 0,
@@ -393,3 +532,18 @@ function debounce(func, wait, immediate) {
             func.apply(context, args);
     };
 }
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+    return false;
+};

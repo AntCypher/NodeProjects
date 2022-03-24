@@ -62,7 +62,7 @@ if ( class_exists( 'acf' ) ) {
                 <div class="row">
                     <div class="col-33">
                         <div class="transactions-search-inner">
-                            <select class="form-select" id="productcat">
+                            <select class="form-select product" id="productcat">
                                 <option value=""><?php _e( 'Product', 'seg' ); ?></option>
                                 <?php
                                 if ( ! empty( $product_cat ) ) {
@@ -78,7 +78,7 @@ if ( class_exists( 'acf' ) ) {
                     </div>
                     <div class="col-33">
                         <div class="transactions-search-inner">
-                            <select class="form-select" id="verticalcat">
+                            <select class="form-select vertical" id="verticalcat">
                                 <option value=""><?php _e( 'Vertical', 'seg' ); ?></option>
                                 <?php
                                 if ( ! empty( $vertical_cat ) ) {

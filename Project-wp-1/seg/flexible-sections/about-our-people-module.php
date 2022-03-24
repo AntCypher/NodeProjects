@@ -103,16 +103,18 @@ while ( $team_query->have_posts() ) {
     $team_twitter           = get_field( 'seg_team_twitter_link', $team_id );
     $team_mail_link         = get_field( 'seg_team_mail_link', $team_id );
     $team_payment_link      = get_field( 'seg_team_payment_link', $team_id );
-//    $team_modal_img         = get_field( 'seg_team_modal_img', $team_id );
-//    $team_modal_img_url     = ! empty( $team_modal_img ) ? $team_modal_img[ 'url' ] : '#';
-//    $team_modal_img_alt     = ! empty( $team_modal_img[ 'alt' ] ) ? $team_modal_img[ 'alt' ] : get_bloginfo();
-    $img_id                 = get_post_thumbnail_id( $team_id );
-    $team_modal_img_alt              = get_post_meta( $img_id, '_wp_attachment_image_alt', true );
-    $team_modal_img_url         = get_the_post_thumbnail_url();
+    $team_modal_img         = get_field( 'seg_team_modal_img', $team_id );
+
+    $team_modal_img_url     = ! empty( $team_modal_img ) ? $team_modal_img[ 'url' ] : '#';
+    $team_modal_img_alt     = ! empty( $team_modal_img[ 'alt' ] ) ? $team_modal_img[ 'alt' ] : get_bloginfo();
+//    $img_id                 = get_post_thumbnail_id( $team_id );
+//    $team_modal_img_alt              = get_post_meta( $img_id, '_wp_attachment_image_alt', true );
+//    $team_modal_img_url         = get_the_post_thumbnail_url();
     $team_highlight_title   = get_field( 'seg_team_career_highlight_title', $team_id );
     $team_highlight_content = get_field( 'seg_team_career_highlight_content', $team_id );
     $team_education_title   = get_field( 'seg_team_education_title', $team_id );
     $team_education_content = get_field( 'seg_team_education_content', $team_id );
+
     ?>
     <div class="modal people-modal" data-id="peopleModal<?php echo $count; ?>">
         <div class="modal-cn-wrapper">
@@ -120,7 +122,7 @@ while ( $team_query->have_posts() ) {
             <div class="inner-wrapper">
                 <div class="left-profile">
                     <div class="tProfile-box">
-                        <?php if ( ! empty( $team_modal_img_url ) ) { ?>
+                        <?php if ( ! empty( $team_modal_img ) ) { ?>
                             <div class="tProfile-box-image">
                                 <img src="<?php echo $team_modal_img_url; ?>" alt="<?php echo $team_modal_img_alt; ?>" />
                             </div>

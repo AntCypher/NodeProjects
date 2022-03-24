@@ -60,8 +60,12 @@ function seg_excerpt_char($content, $length = 40) {
  */
 
 function seg_filter_search($query) {
-    if ( ! is_admin() && $query->is_search ) {
-        $query->set( 'post_type', array ( SEG_POST_POST_TYPE, SEG_PAGE_POST_TYPE,SEG_RESEARCH_POST_TYPE,SEG_TRANSACTION_POST_TYPE ) );
+//    if ( ! is_admin() && $query->is_search ) {
+    if ( ! is_admin() ) {
+
+        if ( $query->is_search || $query->is_category || $query->is_tag || $query->is_tax || $query->is_author || $query->is_archive ) {
+            $query->set( 'post_type', array ( SEG_POST_POST_TYPE, SEG_PAGE_POST_TYPE, SEG_RESEARCH_POST_TYPE, SEG_TRANSACTION_POST_TYPE ) );
+        }
     }
     return $query;
 }
@@ -175,3 +179,101 @@ add_action( 'admin_head', 'seg_admin_favicon' );
  * add filter to add shortcode in widget
  */
 add_filter( 'widget_text', 'do_shortcode' );
+/*
+ * add filter for svg
+ */
+
+add_filter( 'upload_mimes', 'add_file_types_to_uploads' );
+
+function add_file_types_to_uploads($file_types) {
+    $new_filetypes          = array ();
+    $new_filetypes[ 'svg' ] = 'image/svg+xml';
+    $file_types             = array_merge( $file_types, $new_filetypes );
+    return $file_types;
+}
+
+/*
+ * blog form shortcode
+ */
+add_shortcode( 'post_subscribe_form', 'subscribe_form_function' );
+
+function subscribe_form_function() {
+    $subscribe_form = ob_start();
+    $form_subtitle  = get_field( 'seg_blog_contact_form_subtitle', 'option' );
+    $form_title     = get_field( 'seg_blog_contact_form_title', 'option' );
+    $form_sd        = get_field( 'seg_blog_contact_form_sd', 'option' );
+    ?>
+    <div class="right-Sform">
+        <div class="subscribe-form">
+            <div class="subscribe-form-inner">
+                <div class="subscribe-form-ps-inner">
+                    <h2 class="form-subtitle"><?php echo $form_subtitle; ?></h2>
+                    <?php if ( ! empty( $form_title ) ) { ?>
+                        <h2 class="form-title"><?php echo $form_title; ?></h2>
+                    <?php } echo do_shortcode( $form_sd ); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+    $subscribe_form = ob_get_clean();
+    return $subscribe_form;
+}
+
+/*
+ * for primary terms of product
+ */
+
+function get_post_primary_category($post_id, $term = 'category', $return_all_categories = false) {
+    $return = array ();
+
+    if ( class_exists( 'WPSEO_Primary_Term' ) ) {
+        // Show Primary category by Yoast if it is enabled & set
+        $wpseo_primary_term = new WPSEO_Primary_Term( $term, $post_id );
+        $primary_term       = get_term( $wpseo_primary_term->get_primary_term() );
+
+        if ( ! is_wp_error( $primary_term ) ) {
+            $return[ 'primary_category' ] = $primary_term;
+        }
+    }
+
+    if ( empty( $return[ 'primary_category' ] ) || $return_all_categories ) {
+        $categories_list = get_the_terms( $post_id, $term );
+
+        if ( empty( $return[ 'primary_category' ] ) && ! empty( $categories_list ) ) {
+            $return[ 'primary_category' ] = $categories_list[ 0 ];  //get the first category
+        }
+        if ( $return_all_categories ) {
+            $return[ 'all_categories' ] = array ();
+
+            if ( ! empty( $categories_list ) ) {
+                foreach ( $categories_list as &$category ) {
+                    $return[ 'all_categories' ][] = $category->term_id;
+                }
+            }
+        }
+    }
+
+    return $return;
+}
+
+/*
+ * for redirecting contact form to thank you page
+ */
+
+add_action( 'wp_footer', 'cf7_footer_script' );
+
+function cf7_footer_script() {
+    ?>
+    <script>
+        jQuery(document).ready(function () {
+            document.addEventListener('wpcf7mailsent', function (event) {
+                if (event.detail.contactFormId == '1031') {
+                        window.open('https://seg.compview.co/18-factor-thank-you/');
+//                    location = 'https://seg.compview.co/18-factor-thank-you/';
+                }
+            }, false);
+        });
+    </script>
+    <?php
+}

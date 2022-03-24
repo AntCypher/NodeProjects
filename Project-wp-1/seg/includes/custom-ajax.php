@@ -2,6 +2,7 @@
 /*
  * custom ajax functions
  */
+
 add_action( 'wp_ajax_transaction_cat_filter', 'transaction_cat_filter' );
 add_action( 'wp_ajax_nopriv_transaction_cat_filter', 'transaction_cat_filter' );
 
@@ -48,19 +49,22 @@ function transaction_cat_filter() {
             <?php
             while ( $transaction_query->have_posts() ) {
                 $transaction_query->the_post();
-                $transaction_id        = get_the_ID();
-                $trans_images          = get_field( 'seg_trans_images', $transaction_id );
-                $trans_highlight       = get_field( 'seg_trans_highlight_cta', $transaction_id );
-                $trans_content         = get_the_title();
-                $trans_permalink       = get_the_permalink();
-                $product_category      = wp_get_post_terms( get_the_ID(), SEG_PRODUCT_TAX, array ( 'fields' => 'all' ) );
-                $product_category_id   = $product_category[ 0 ]->term_id;
-                $product_category_slug = $product_category[ 0 ]->slug;
+                $transaction_id           = get_the_ID();
+                $trans_images             = get_field( 'seg_trans_images', $transaction_id );
+                $trans_highlight          = get_field( 'seg_trans_highlight_cta', $transaction_id );
+                $trans_content            = get_the_title();
+                $trans_permalink          = get_the_permalink();
+//                $product_category         = wp_get_post_terms( get_the_ID(), SEG_PRODUCT_TAX, array ( 'fields' => 'all' ) );
+//                $product_category_id      = $product_category[ 0 ]->term_id;
+//                $product_category_slug    = $product_category[ 0 ]->slug;
+                $primary_product_cat_obj  = get_post_primary_category( $transaction_id, SEG_PRODUCT_TAX );
+                $primary_product_cat      = $primary_product_cat_obj[ 'primary_category' ];
+                $primary_product_cat_slug = $primary_product_cat->slug;
                 ?>
                 <div class="col-20">
-                    <div class="transactions-box">
-                        <div class="transactions-box-inner">
-                            <a href="<?php echo $trans_permalink; ?>" class="btn-arrow">
+                    <a href="<?php echo $trans_permalink; ?>" class="btn-arrow">
+                        <div class="transactions-box">
+                            <div class="transactions-box-inner">
                                 <div class="transactions-box-col">
                                     <?php if ( ! empty( $trans_images ) ) { ?>
                                         <div class="transactions-logo-box">
@@ -81,16 +85,16 @@ function transaction_cat_filter() {
                                         </div>
                                     <?php } ?>
                                     <div class="transactions-box-contain">
-                                        <div class="transactions-tag"><?php echo strtoupper( $product_category_slug ); ?></div>
+                                        <div class="transactions-tag"><?php echo strtoupper( $primary_product_cat_slug ); ?></div>
                                         <h6 class="transactions-box-title"><?php echo $trans_content; ?></h6>
                                         <?php if ( ! empty( $trans_highlight ) ) { ?>
                                             <span class="btn-arrow" ><?php echo $trans_highlight; ?><span><img src="<?php echo get_template_directory_uri() ?>/images/btn-arrow.png" alt=""></span></span>
                                         <?php } ?>
                                     </div>
                                 </div>
-                            </a>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
                 <?php
@@ -166,18 +170,21 @@ function research_tax_filter() {
             <?php
             while ( $research_query->have_posts() ) {
                 $research_query->the_post();
-                $research_id          = get_the_ID();
-                $research_title       = get_the_title();
-                $research_permalink   = get_the_permalink();
-                $img_id               = get_post_thumbnail_id( $research_id );
-                $research_img_alt     = get_post_meta( $img_id, '_wp_attachment_image_alt', true );
-                $research_img_url     = get_the_post_thumbnail_url();
-                $research_subtitle    = get_field( 'seg_research_subtitle', $research_id );
-                $research_description = get_field( 'seg_research_description', $research_id );
-                $research_cta_label   = get_field( 'seg_research_access_cta_label', $research_id );
-                $research_permalink   = get_the_permalink();
-                $post_tax             = wp_get_post_terms( get_the_ID(), SEG_REPORT_TAX, array ( 'fields' => 'all' ) );
-                $post_tax_slug        = $post_tax[ 0 ]->slug;
+                $research_id             = get_the_ID();
+                $research_title          = get_the_title();
+                $research_permalink      = get_the_permalink();
+                $img_id                  = get_post_thumbnail_id( $research_id );
+                $research_img_alt        = get_post_meta( $img_id, '_wp_attachment_image_alt', true );
+                $research_img_url        = get_the_post_thumbnail_url();
+                $research_subtitle       = get_field( 'seg_research_subtitle', $research_id );
+                $research_description    = get_field( 'seg_research_description', $research_id );
+                $research_cta_label      = get_field( 'seg_research_access_cta_label', $research_id );
+                $research_permalink      = get_the_permalink();
+//                $post_tax             = wp_get_post_terms( get_the_ID(), SEG_REPORT_TAX, array ( 'fields' => 'all' ) );
+//                $post_tax_slug        = $post_tax[ 0 ]->slug;
+                $primary_report_cat_obj  = get_post_primary_category( $research_id, SEG_REPORT_TAX );
+                $primary_report_cat      = $primary_report_cat_obj[ 'primary_category' ];
+                $primary_report_cat_slug = $primary_report_cat->slug;
                 ?>                
                 <div class="col-33">
                     <div class="research-overview-box">
@@ -192,7 +199,7 @@ function research_tax_filter() {
                                         <?php } ?>
                                     </div>
                                     <div class="research-overview-box-contain">
-                                        <div class="research-overview-tag"><?php echo strtoupper( $post_tax_slug ); ?></div>
+                                        <div class="research-overview-tag"><?php echo strtoupper( $primary_report_cat_slug ); ?></div>
                                         <div class="research-overview-box-contain-inner">
                                             <?php if ( ! empty( $research_title ) ) { ?>
                                                 <h3 class="research-overview-box-title"><?php echo $research_title; ?></h3>

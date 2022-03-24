@@ -49,20 +49,6 @@ if ( class_exists( 'acf' ) ) {
                             <?php echo $description; ?>
                             <div class="socialMedia-wrapper">
                                 <h3 class="s-title"><?php echo $share_title; ?></h3>
-                                <!--                                <ul class="socialMedia-lists">
-                                <?php // if ( ! empty( $facebook ) ) { ?>
-                                                                        <li class="social-item facebook"><a href="<?php // echo $facebook;   ?>"></a></li>
-                                <?php // } ?>
-                                                                    //<?php // if ( ! empty( $twitter ) ) {   ?>
-                                                                        <li class="social-item twitter"><a href="<?php // echo $twitter;   ?>"></a></li>
-                                <?php // } ?>
-                                <?php // if ( ! empty( $linkedin ) ) { ?>
-                                                                        <li class="social-item linkdin"><a href="<?php // echo $linkedin;   ?>"></a></li>
-                                <?php // } ?>
-                                <?php // if ( ! empty( $mail ) ) { ?>
-                                                                        <li class="social-item mail"><a href="mailto:<?php // echo $mail;   ?>"></a></li>
-                                <?php // } ?>
-                                                                </ul>-->    
                                 <ul class="share-buttons socialMedia-lists">
                                     <li class="social-item">
                                         <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $permalink; ?>&amp;title=<?php echo $title; ?>&amp;picture=<?php echo $research_img_url; ?>&amp;description=<?php echo wp_trim_words( $description, 20 ); ?>" title="Share on Facebook" target="_blank" onclick="return !window.open(this.href, 'Facebook', 'width=600,height=500')"><i class="fab fa-facebook-f"></i> </a></li>
@@ -115,12 +101,6 @@ if ( class_exists( 'acf' ) ) {
                                             </div>
                                         </div>
                                     <?php } ?>
-    <!--                                <img src="images/rs-video-img.png" alt="" />
-                        <div class="rs-video-btn-wrapper">
-                            <a class="rs-video-btn" href="https://www.youtube.com/watch?v=N6Zg8Q-jKNI">
-                                <img src="images/video-play-icon.png" alt="">
-                            </a>
-                        </div>-->
                                 </div>
                             <?php } ?>
 
@@ -132,9 +112,38 @@ if ( class_exists( 'acf' ) ) {
         </div>
     </section>
     <section class="recent-research-section">
-        <div class="container">
-            <h2 class="section-title"><?php echo $recent_report_title; ?></h2>
-            <?php
+        <?php
+        if ( $show_default ) {
+            $recent_args[ 'post_type' ]      = SEG_RESEARCH_POST_TYPE;
+            $recent_args[ 'post__not_in' ]   = array ( $research_id );
+            $recent_args[ 'posts_per_page' ] = 3;
+            $recent_args[ 'order' ]          = 'DESC';
+            $recent_args[ 'tax_query' ][]    = array (
+                'taxonomy' => SEG_REPORT_TAX,
+                'field'    => 'term_id',
+                'terms'    => $report_id,
+            );
+        } else {
+            $recent_args[ 'post_type' ]    = SEG_RESEARCH_POST_TYPE;
+            $recent_args[ 'post__not_in' ] = array ( $research_id );
+//            if ( ! $show_default ) {
+//                  $recent_args[ 'posts_per_page' ] = 1;
+            $recent_args[ 'post__in' ]     = $select_research;
+            $recent_args[ 'orderby' ]      = "post__in";
+            $recent_args[ 'tax_query' ][]  = array (
+                'taxonomy' => SEG_REPORT_TAX,
+                'field'    => 'term_id',
+                'terms'    => $report_id,
+            );
+        }
+
+        $recent_research_query = new WP_Query( $recent_args );
+        $post_count            = $recent_research_query->post_count;
+        if ( ! empty( $post_count ) ) {
+            ?>
+            <div class="container">
+                <h2 class="section-title"><?php echo $recent_report_title; ?></h2>
+                <?php
 //            $recent_args = array (
 //                'post_type'    => SEG_RESEARCH_POST_TYPE,
 //                'post__not_in' => array ( $research_id ),
@@ -149,89 +158,68 @@ if ( class_exists( 'acf' ) ) {
 //                    ),
 //                ),
 //            );
-            if ( $show_default ) {
-                $recent_args[ 'post_type' ]      = SEG_RESEARCH_POST_TYPE;
-                $recent_args[ 'post__not_in' ]   = array ( $research_id );
-                $recent_args[ 'posts_per_page' ] = 3;
-                $recent_args[ 'order' ]          = 'DESC';
-                $recent_args[ 'tax_query' ][]    = array (
-                    'taxonomy' => SEG_REPORT_TAX,
-                    'field'    => 'term_id',
-                    'terms'    => $report_id,
-                );
-            } else {
-                $recent_args[ 'post_type' ]    = SEG_RESEARCH_POST_TYPE;
-                $recent_args[ 'post__not_in' ] = array ( $research_id );
-//            if ( ! $show_default ) {
-//                  $recent_args[ 'posts_per_page' ] = 1;
-                $recent_args[ 'post__in' ]     = $select_research;
-                $recent_args[ 'orderby' ]      = "post__in";
-                $recent_args[ 'tax_query' ][]  = array (
-                    'taxonomy' => SEG_REPORT_TAX,
-                    'field'    => 'term_id',
-                    'terms'    => $report_id,
-                );
-            }
-
-            $recent_research_query = new WP_Query( $recent_args );
-            ?>
-            <div class="row">
-                <?php
-                while ( $recent_research_query->have_posts() ) {
-                    $recent_research_query->the_post();
-                    $res_id               = get_the_ID();
-                    $research_title       = get_the_title();
-                    $research_permalink   = get_the_permalink();
-                    $img_id               = get_post_thumbnail_id( $res_id );
-                    $research_img_url     = get_the_post_thumbnail_url();
-                    $research_img_alt     = get_post_meta( $img_id, '_wp_attachment_image_alt', true );
-                    $research_subtitle    = get_field( 'seg_research_subtitle', $res_id );
-                    $research_description = get_field( 'seg_research_description', $res_id );
-                    $research_cta_label   = get_field( 'seg_research_access_cta_label', $res_id );
-                    $research_permalink   = get_the_permalink();
-                    $post_tax             = wp_get_post_terms( get_the_ID(), SEG_REPORT_TAX, array ( 'fields' => 'all' ) );
-                    $post_tax_slug        = $post_tax[ 0 ]->slug;
-                    ?>
-                    <div class="col-33">
-                        <div class="research-overview-box">
-                            <div class="research-overview-box-inner">
-                                <div class="research-overview-box-col">
-                                    <a href="<?php echo $research_permalink; ?>">
-                                        <div class="research-overview-logo-box">
-                                            <?php if ( ! empty( $research_img_url ) ) { ?>
-                                                <div class="research-overview-logo-inner">
-                                                    <img src="<?php echo $research_img_url; ?>" alt="<?php echo $research_img_alt; ?>">
-                                                </div>
-                                            <?php } ?>
-                                        </div>
-                                        <div class="research-overview-box-contain">
-                                            <div class="research-overview-tag"><?php echo strtoupper( $post_tax_slug ); ?></div>
-                                            <div class="research-overview-box-contain-inner">
-                                                <?php if ( ! empty( $research_title ) ) { ?>
-                                                    <h3 class="research-overview-box-title"><?php echo $research_title; ?></h3>
-                                                <?php } if ( ! empty( $research_subtitle ) ) { ?>
-                                                    <h5 class="research-overview-box-subtitle"><?php echo $research_subtitle; ?></h5>
-                                                <?php } if ( ! empty( $research_description ) ) { ?>
-                                                    <p class="research-overview-box-text"><?php echo $research_description; ?></p>
-                                                <?php } if ( ! empty( $research_cta_label ) || $research_permalink ) { ?>
-                                                    <span class="btn-arrow"><?php echo $research_cta_label; ?><span><img src="<?php echo get_theme_file_uri(); ?>/images/btn-arrow.png" alt=""></span></span>
-                                                        <?php } ?>
+                ?>
+                <div class="row">
+                    <?php
+                    while ( $recent_research_query->have_posts() ) {
+                        $recent_research_query->the_post();
+                        $res_id                  = get_the_ID();
+                        $research_title          = get_the_title();
+                        $research_permalink      = get_the_permalink();
+                        $img_id                  = get_post_thumbnail_id( $res_id );
+                        $research_img_url        = get_the_post_thumbnail_url();
+                        $research_img_alt        = get_post_meta( $img_id, '_wp_attachment_image_alt', true );
+                        $research_subtitle       = get_field( 'seg_research_subtitle', $res_id );
+                        $research_description    = get_field( 'seg_research_description', $res_id );
+                        $research_cta_label      = get_field( 'seg_research_access_cta_label', $res_id );
+                        $research_permalink      = get_the_permalink();
+//                    $post_tax             = wp_get_post_terms( get_the_ID(), SEG_REPORT_TAX, array ( 'fields' => 'all' ) );
+//                    $post_tax_slug        = $post_tax[ 0 ]->slug;
+                        $primary_report_cat_obj  = get_post_primary_category( $research_id, SEG_REPORT_TAX );
+                        $primary_report_cat      = $primary_report_cat_obj[ 'primary_category' ];
+                        $primary_report_cat_slug = $primary_report_cat->slug;
+                        ?>
+                        <div class="col-33">
+                            <div class="research-overview-box">
+                                <div class="research-overview-box-inner">
+                                    <div class="research-overview-box-col">
+                                        <a href="<?php echo $research_permalink; ?>">
+                                            <div class="research-overview-logo-box">
+                                                <?php if ( ! empty( $research_img_url ) ) { ?>
+                                                    <div class="research-overview-logo-inner">
+                                                        <img src="<?php echo $research_img_url; ?>" alt="<?php echo $research_img_alt; ?>">
+                                                    </div>
+                                                <?php } ?>
                                             </div>
-                                        </div>
-                                    </a>
+                                            <div class="research-overview-box-contain">
+                                                <div class="research-overview-tag"><?php echo strtoupper( $primary_report_cat_slug ); ?></div>
+                                                <div class="research-overview-box-contain-inner">
+                                                    <?php if ( ! empty( $research_title ) ) { ?>
+                                                        <h3 class="research-overview-box-title"><?php echo $research_title; ?></h3>
+                                                    <?php } if ( ! empty( $research_subtitle ) ) { ?>
+                                                        <h5 class="research-overview-box-subtitle"><?php echo $research_subtitle; ?></h5>
+                                                    <?php } if ( ! empty( $research_description ) ) { ?>
+                                                        <p class="research-overview-box-text"><?php echo $research_description; ?></p>
+                                                    <?php } if ( ! empty( $research_cta_label ) || $research_permalink ) { ?>
+                                                        <span class="btn-arrow"><?php echo $research_cta_label; ?><span><img src="<?php echo get_theme_file_uri(); ?>/images/btn-arrow.png" alt=""></span></span>
+                                                            <?php } ?>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <?php
-                }
-                wp_reset_query();
-                wp_reset_postdata();
-                ?>
+                        <?php
+                    }
+                    wp_reset_query();
+                    wp_reset_postdata();
+                    ?>
 
 
+                </div>
             </div>
-        </div>
+        <?php } ?>
     </section>
 </div>
 

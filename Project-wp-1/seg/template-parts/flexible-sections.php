@@ -16,6 +16,22 @@ if ( ! empty( 'seg_global_page_sections' ) ) {
             get_template_part( 'flexible-sections/home-transaction-slider-module' );
         } elseif ( get_row_layout() == 'home_why_choose_seg_module' ) {
             get_template_part( 'flexible-sections/home-why-choose-seg' );
-        }
+        } elseif ( get_row_layout() == 'lp_banner_module' ) {
+            get_template_part( 'flexible-sections/landing-banner-module' );
+        } elseif ( get_row_layout() == 'lp_know_the_score_module' ) {
+            get_template_part( 'flexible-sections/landing-score-module' );
+        } elseif ( get_row_layout() == 'lp_image_content_module' ) {
+            get_template_part( 'flexible-sections/landing-image-content-module' );
+        } elseif ( get_row_layout() == 'lp_every_journey_module' ) {
+            get_template_part( 'flexible-sections/landing-every-journey-module' );
+        } elseif ( get_row_layout() == 'lp_weigh_interpt_factor_module' ) {
+            get_template_part( 'flexible-sections/landing-weigh-interpt-module' );
+        } elseif ( get_row_layout() == 'lp_experience_module' ) {
+            get_template_part( 'flexible-sections/landing-experience-module' );
+        } elseif ( get_row_layout() == 'ty_banner_module' ) {
+            get_template_part( 'flexible-sections/thankyou-banner-module' );
+        } elseif ( get_row_layout() == 'ty_view_seg_whiteppr_module' ) {
+            get_template_part( 'flexible-sections/thankyou-view-seg-white-module' );
+        } 
     }
 }
